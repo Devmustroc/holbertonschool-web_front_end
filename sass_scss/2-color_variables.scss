@@ -1,0 +1,14 @@
+/* 2 variable with 2 color for bg and text*/
+$primary-color: #3D3D3D;
+$primary-bg: #6D6D6D;
+body {
+  color: $primary-color;
+  background-color: $primary-bg;
+}
+p {
+  color: $primary-color;
+}
+
+h2 {
+  background-color: $primary-bg;
+}

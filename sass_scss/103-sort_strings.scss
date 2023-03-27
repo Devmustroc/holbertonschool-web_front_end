@@ -1,0 +1,17 @@
+/* sort a variable and print it */
+@import '103-sort_list.scss';
+
+$len: length($list_to_sort);
+
+@for $i from 1 to $len {
+  @for $j from 1 to ($len - $i) {
+    $current: nth($list_to_sort, $j);
+    $next: nth($list_to_sort, ($j + 1));
+    @if $current > $next {
+      $list_to_sort: set-nth($list_to_sort, $j, $next);
+      $list_to_sort: set-nth($list_to_sort, ($j + 1), $current);
+    }
+  }
+}
+
+@debug $list_to_sort;
