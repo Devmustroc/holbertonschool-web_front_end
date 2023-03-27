@@ -215,7 +215,7 @@ ul.row {
     font-size: var(--nav-item-font-size);
     letter-spacing: var(--nav-item-letter-spacing);
 }
-.nav.nav-item + .nav-item {
+.nav .nav-item + .nav-item {
     margin: var(--nav-item-margin);
 }
 .nav .nav-link {
