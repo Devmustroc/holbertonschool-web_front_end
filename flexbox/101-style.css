@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+.box1 {
+    background-color: #23CD6A;
+}
+
+.box2 {
+    background-color: #2999E2;
+}
+
+.box3 {
+    background-color: #344A61;
+}
+
+.box4 {
+    background-color: #E18108;
+}
+
+.box5 {
+    background-color: rgb(247, 108, 16);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.box {
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+.box3 {
+    width: 18rem;
+    height: 10rem;
+    font-size: 6rem;
+}
+
+.box2, .box4 {
+    font-size: 3rem;
+    width: 10rem;
+    height: 6rem;
+}
+
+.box1, .box5 {
+    width: 6rem;
+    height: 4rem;
+    font-size: 1.5rem;
+}
