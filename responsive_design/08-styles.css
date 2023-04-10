@@ -632,6 +632,18 @@ ul.row {
 .card-work:hover .card-title {
     opacity: 1;
 }
+@media (max-width: 676px) {
+    .card-work .card-inner {
+        --text-color: var(--color-white);
+        position: relative;
+    }
+    .card-work .card-title {
+        opacity: 1;
+    }
+    .card-work .card-title a {
+        padding: 2rem 1rem 0 1rem;
+    }
+}
 
 /* Card SERVICES
     ============================= */
