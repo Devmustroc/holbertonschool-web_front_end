@@ -656,9 +656,6 @@ ul.row {
     transition: var(--transition-duration) var(--transition-cubic-bezier);
 }
 
-.card-work:hover .card-inner {
-    background-color: rgba(0, 0, 0, 0.7);
-}
 
 .card-work .card-title {
     text-align: center;
@@ -668,6 +665,7 @@ ul.row {
 }
 
 .card-work .card-title a {
+    opacity: 0;
     display: block;
     text-decoration: none;
     padding-top: 45%;
