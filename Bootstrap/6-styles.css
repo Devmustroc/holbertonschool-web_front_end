@@ -26,7 +26,7 @@ a:hover {
     text-decoration: none;
 }
 .card {
-    border-color: #E0003C;
+    border: 1px solid #E0003C;
     border-radius: 1rem;
 }
 .card-header,
@@ -39,8 +39,8 @@ a:hover {
     border-radius: calc(1rem - 1px) calc(1rem - 1px) 0 0;
 }
 .text-muted {
-    color: #8C8C8C;
+    color: #8C8C8C !important;
 }
 .border-bottom {
-    border-bottom: #E0003C !important;
+    border-bottom: 1px solid #E0003C !important;
 }
