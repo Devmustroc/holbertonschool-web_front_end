@@ -13,6 +13,11 @@
     border-color: #E0003C;
     color: #E0003C;
 }
+.btn-outline-primary:hover {
+    background-color: #E0003C;
+    border-color: #E0003C;
+    color: #fff;
+}
 
 a,
 a:focus,
