@@ -22,7 +22,8 @@
 a,
 a:focus,
 a:hover {
-    color: #E0003C;
+    color: #E0003C !important;
+    text-decoration: none;
 }
 .card {
     border-color: #E0003C;
