@@ -1,8 +1,10 @@
 const createElement = (data) => {
-    const element = document.createElement("div");
-    element.innerHTML = data;
-    return element;
-};
+    const para = document.createElement("p");
+    const text = document.createTextNode(data);
+    para.appendChild(text);
+    document.body.appendChild(para);
+}
+
 const queryWikipedia = (callback) => {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Stack%20Overflow&origin=*')
