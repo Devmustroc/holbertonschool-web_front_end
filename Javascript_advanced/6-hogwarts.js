@@ -19,6 +19,13 @@ const studentHogwarts = function() {
         }
     };
 };
+const harry = studentHogwarts();
+harry.setName('Harry');
+harry.rewardStudent();
+harry.rewardStudent();
+harry.rewardStudent();
+harry.rewardStudent();
+console.log(harry.getScore());
 
 const draco = studentHogwarts();
 draco.setName('Draco');
