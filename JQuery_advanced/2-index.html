@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Task 2</title>
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous">
+
+    </script>
+
+</head>
+
+<body>
+<script type="application/javascript">
+        /* document.crerateElement("table"); is the same as $("<table>") */
+        function createTextElement() {
+            let textElement = $("<table>").add("
+            <table>
+            <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            </tr>
+            <tr>
+            <td>Guillaume</td>
+            <td>Salva</td>
+            </tr>
+            <tr>
+            <td>Paulette</td>
+            <td>Salva</td>
+            </tr>
+            <tr>
+            <td>Antoine</td>
+            <td>Salva</td>
+            </tr>
+            </table>");
+            $("body").append(textElement);
+        };
+        createTextElement();
+    </script>
+</body>
+</html>
