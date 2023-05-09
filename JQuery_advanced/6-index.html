@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Task 3</title>
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous">
+    </script>
+    <style>
+        td.remove {
+            background-color: orange;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<script>
+    $(document).ready(function () {
+        function createFamilyTree () {
+            const table = $('<table>');
+            const thead = $('<thead>');
+            const tr = $('<tr>');
+            const th1 = $('<th>').text('Firstname');
+            const th2 = $('<th>').text('Lastname');
+
+            tr.append(th1, th2);
+            thead.append(tr);
+            table.append(thead);
+
+            const tbody = $('<tbody>');
+            table.append(table);
+        }
+    })
+</script>
+</body>
+</html>
