@@ -15,69 +15,81 @@
             color: white;
             cursor: pointer;
         }
+        select {
+            background-color: white !important;
+            font-size: 11px !important;
+            background: url('arrow2.png') no-repeat right border-box;
+            background-position: 100%;
+            padding: 2px 20px 2px 8px;
+            background-size: 14px;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            outline: none !important;
+            -webkit-border-radius: 4px;
+            border: 1px  solid #cccccc;
+        }
+        select option {
+
+        }
     </style>
 </head>
 
 <body>
-<script type="application/javascript">
-    function createFamilyTree() {
-        $("body").append("<table></table>");
-        $("table").append("<thead></thead>");
-        $("table").append("<tbody></tbody>");
-        /*DATA HEAD*/
-        $("thead").append("<tr></tr>");
-        $("thead > tr").append("<th></th>", "<th></th>");
-        $("tr > th:first-child").append("Firstname");
-        $("tr > th:last-child").append("Lastname");
-    }
-
-    function addNewMember(firstName, lastName, position) {
-        let tr = $("<tr></tr>");
-        let x = $("<td>(x)</td>");
-
-        x.css("background-color", "orange");
-        x.click(function() {
-            $(tr).remove()
-        });
-
-        tr.append("<td>" + firstName + "</td>");
-        tr.append("<td>" + lastName + "</td>");
-        tr.append(x);
-
-        if (position === 'before') {
-            $("tbody").prepend(tr);
-        } else {
-            $("tbody").append(tr);
+    <script type="application/javascript">
+        function createFamilyTree() {
+            const table = $("<table>");
+            const header = $('<thead>').append($('<tr>').append($('<th>').text('Firstname'), $('<th>').text('Lastname')));
+            const body = $('<tbody>');
+            $('body').append(table.append(header, body));
         }
-    }
 
-    function createForm() {
-        let selecOption = $("<select></select>");
-        let buttonSubmit = $("<input type='submit'>");
+        function addNewMember(firstName, lastName, position) {
+            const row = $('<tr>');
+            row.append($('<td>').text(firstName), $('<td>').text(lastName));
+            const removeBtn = $('<td>').text('(x)').addClass('remove').click(function() {
+                row.remove();
+            });
+            row.append(removeBtn);
 
-        selecOption.append(
-            "<option value='before'>Before</option>",
-            "<option value='after'>After</option>"
-        );
+            if (position === 'before') {
+                $('tbody').prepend(row);
+            } else {
+                $('tbody').append(row);
+            }
+        }
 
-        buttonSubmit.click(function() {
-            let val1 = $("input").first().val();
-            let val2 = $("input:nth-of-type(2)").val();
-            let val3 = selecOption.val();
+        function createForm() {
+            const form = $('<form>');
+            const firstNameInput = $('<input>').attr('type', 'text').attr('name', 'firstName').attr('placeholder', 'First name');
+            const lastNameInput = $('<input>').attr('type', 'text').attr('name', 'lastName').attr('placeholder', 'Last name');
+            const positionSelect = $('<select>').attr('name', 'position');
+            const beforeOption = $('<option>').attr('value', 'before').text('Before');
+            const afterOption = $('<option>').attr('value', 'after').text('After');
+            positionSelect.append(beforeOption, afterOption);
+            const submitBtn = $('<input>').attr('type', 'submit').val('Add member');
+            form.append(firstNameInput, lastNameInput, positionSelect, submitBtn);
 
-            addNewMember(val1, val2, val3);
-        });
+            form.submit(function(event) {
+                event.preventDefault();
+                const firstName = firstNameInput.val();
+                const lastName = lastNameInput.val();
+                const position = positionSelect.val();
+                addNewMember(firstName, lastName, position);
+                firstNameInput.val('');
+                lastNameInput.val('');
+            });
 
-        $("table").before(
-            "<input type='text'>",
-            "<input type='text'>",
-            selecOption,
-            buttonSubmit);
-    }
+            $('body').prepend(form);
+        }
 
-    createFamilyTree();
-    createForm();
-</script>
+        createFamilyTree();
+        createForm();
+        addNewMember('Guillaume', 'Salva', 'after');
+        addNewMember('Arielle', 'Snizt', 'after');
+        addNewMember('Fanette', 'Snizt', 'before');
+        addNewMember('Gerard', 'Snizt', 'after');
+        addNewMember('Victor', 'Salva', 'before');
+    </script>
 </body>
 
 </html>
