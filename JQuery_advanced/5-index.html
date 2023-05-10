@@ -19,29 +19,29 @@
     </style>
 </head>
 <body>
-<script>
-    function createFamilyTree() {
-        const table = $('<table>');
-        const header = $('<thead>').append($('<tr>').append($('<th>').text('Firstname'), $('<th>').text('Lastname')));
-        const body = $('<tbody>');
-        $('body').append(table.append(header, body));
-    }
+    <script type="application/javascript">
+        function createFamilyTree() {
+            const table = $("<table>");
+            const header = $('<thead>').append($('<tr>').append($('<th>').text('Firstname'), $('<th>').text('Lastname')));
+            const body = $('<tbody>');
+            $('body').append(table.append(header, body));
+        }
+        function addNewMember(firstName, lastName) {
+            const row = $('<tr>');
+            row.append($('<td>').text(firstName), $('<td>').text(lastName));
+            const removeBtn = $('<td>').text('(x)').css('background-color', 'orange').click(function() {
+                row.remove();
+            });
+            row.append(removeBtn);
+            $('tbody').append(row);
+        }
 
-    function addNewMember(firstName, lastName) {
-        const row = $('<tr>').append($('<td>').text(firstName), $('<td>').text(lastName), $('<td>').text('(x)').addClass('remove'));
-        $('tbody').append(row);
-
-        row.find('.remove').click(function() {
-            $(this).parent().remove();
-        });
-    }
-
-    createFamilyTree();
-    addNewMember('Guillaume', 'Salva');
-    addNewMember('Arielle', 'Snizt');
-    addNewMember('Fanette', 'Snizt');
-    addNewMember('Gerard', 'Snizt');
-    addNewMember('Victor', 'Salva');
-</script>
+        createFamilyTree();
+        addNewMember('Guillaume', 'Salva');
+        addNewMember('Arielle', 'Snizt');
+        addNewMember('Fanette', 'Snizt');
+        addNewMember('Gerard', 'Snizt');
+        addNewMember('Victor', 'Salva');
+    </script>
 </body>
 </html>
