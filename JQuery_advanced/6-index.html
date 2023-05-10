@@ -18,7 +18,7 @@
         select {
             background-color: white !important;
             font-size: 11px !important;
-            background: url('https://cdn3.iconfinder.com/data/icons/trico-arrows-1/24/ExpandUpDownSmall-512.png') no-repeat right #4bae4b;
+            background: url('https://cdn3.iconfinder.com/data/icons/trico-arrows-1/24/ExpandUpDownSmall-512.png') no-repeat right #215453;
             background-position: 100%;
             margin-left: 3px;
             margin-right: 3px;
@@ -29,9 +29,6 @@
             outline: none !important;
             -webkit-border-radius: 2px;
             border: 1px  solid #cccccc;
-        }
-        select option {
-
         }
     </style>
 </head>
@@ -62,13 +59,13 @@
 
         function createForm() {
             const form = $('<form>');
-            const firstNameInput = $('<input>').attr('type', 'text').attr('name', 'firstName').attr('placeholder', 'First name');
-            const lastNameInput = $('<input>').attr('type', 'text').attr('name', 'lastName').attr('placeholder', 'Last name');
+            const firstNameInput = $('<input>').attr('type', 'text');
+            const lastNameInput = $('<input>').attr('type', 'text');
             const positionSelect = $('<select>').attr('name', 'position');
             const beforeOption = $('<option>').attr('value', 'before').text('Before');
             const afterOption = $('<option>').attr('value', 'after').text('After');
             positionSelect.append(beforeOption, afterOption);
-            const submitBtn = $('<input>').attr('type', 'submit').val('Add member');
+            const submitBtn = $('<input>').attr('type', 'submit').val('Submit');
             form.append(firstNameInput, lastNameInput, positionSelect, submitBtn);
 
             form.submit(function(event) {
