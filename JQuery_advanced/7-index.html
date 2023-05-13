@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Task 6</title>
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous">
+    </script>
+    <style>
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        li p:first-child {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        li p:first-child span {
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+<script type="application/javascript">
+    function createSearchForm() {
+        const form = $('<form>');
+        const searchInput = $('<input>').attr('type', 'text');
+        const submitBtn = $('<input>').attr('type', 'submit').val('Submit');
+        const resultList = $('<ul>');
+
+        form.append(searchInput, submitBtn, resultList);
+
+        form.submit(function(event) {
+            event.preventDefault();
+            const searchTerm = searchInput.val();
+            queryWikipedia(searchTerm);
+            searchInput.val('');
+        });
+        $('body').prepend(form);
+    }
+
+    function addNewArticle(id, title, snippet) {
+        const listItem = $('<li>');
+        const titleParagraph = $('<p>').html(`<span>${id} -</span> <b>${title}</b>`);
+        const snippetParagraph = $('<p>').html(snippet);
+
+        listItem.append(titleParagraph, snippetParagraph);
+        $('ul').append(listItem);
+    }
+
+</script>
+</body>
+</html>
