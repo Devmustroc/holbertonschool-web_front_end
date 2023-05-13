@@ -3,33 +3,13 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Task 6</title>
+
     <script
             src="https://code.jquery.com/jquery-3.6.4.min.js"
             integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
             crossorigin="anonymous">
     </script>
     <style>
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        li {
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-        }
-
-        li p:first-child {
-            margin: 0;
-            font-weight: bold;
-        }
-
-        li p:first-child span {
-            font-weight: normal;
         }
     </style>
 </head>
@@ -50,18 +30,56 @@
             queryWikipedia(searchTerm);
             searchInput.val('');
         });
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
         $('body').prepend(form);
     }
 
     function addNewArticle(id, title, snippet) {
         const listItem = $('<li>');
+<<<<<<< HEAD
         const titleParagraph = $('<p>').html(`<span>${id} -</span> <b>${title}</b>`);
+=======
+        const titleParagraph = $('<p>').html(`<span>${id} - </span> <b>${title}</b>`);
+>>>>>>> origin/main
         const snippetParagraph = $('<p>').html(snippet);
 
         listItem.append(titleParagraph, snippetParagraph);
         $('ul').append(listItem);
     }
 
+<<<<<<< HEAD
 </script>
 </body>
 </html>
+=======
+    function queryWikipedia(searchTerm) {
+        const apiUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=';
+        const url = apiUrl + searchTerm;
+
+        $.ajax({
+            url: url,
+            dataType: 'jsonp',
+            success: function(data) {
+                const results = data.query.search;
+                for (let i = 0; i < results.length; i++) {
+                    const result = results[i];
+                    const id = result.pageid;
+                    const title = result.title;
+                    const snippet = result.snippet;
+                    addNewArticle(id, title, snippet);
+                }
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        createSearchForm();
+    });
+</script>
+</body>
+
+</html>
+>>>>>>> origin/main
