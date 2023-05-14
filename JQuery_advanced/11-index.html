@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <title>My Posts</title>
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+
+<script>
+    function addPostRow(data) {
+        $('body').append('<p><span>Post created with id ' + data.id + ', title: ' + data.title + ', author: ' + data.author + '</span></p>');
+    }
+
+    function listPosts() {
+        $.get('http://localhost:3000/posts', function(data, status) {
+            if (status === 'success') {
+                data.forEach(function(post) {
+                    addPostRow(post);
+                });
+            } else {
+                alert('Server Error');
+            }
+        });
+    }
+
+    function buildForm() {
+        $('body').append('<form><div><label for="author">Author</label><input type="text" id="author"></div><div><label for="title">Title</label><textarea id="title"></textarea></div><input type="submit"></form>');
+        $('label').on('click', function() {
+            $(this).siblings('input, textarea').focus();
+        });
+        $('form').on('submit', function(e) {
+            e.preventDefault();
+            sendForm();
+        });
+    }
+
+    function sendForm() {
+        $('form').after('<p>About to send the query to the API</p>');
+        var data = {
+            title: $('#title').val(),
+            author: $('#author').val()
+        };
+        $.post('http://localhost:3000/posts', data, function(data, status) {
+            if (status === 'success') {
+                addPostRow(data);
+            } else {
+                alert('Error sending the POST query');
+            }
+            $('p').last().remove();
+        });
+    }
+
+    $(document).ready(function() {
+        listPosts();
+        buildForm();
+    });
+</script>
+
+</body>
+</html>
