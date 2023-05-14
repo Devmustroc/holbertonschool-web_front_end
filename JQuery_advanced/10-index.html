@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crud API</title>
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+
+<script>
+    function addPostRow(data) {
+        $('body').append('<p><span>Post created with id ' + data.id + ', title: ' + data.title + ', author: ' + data.author + '</span></p>');
+    }
+
+    function listPosts() {
+        $.get('http://localhost:3000/posts', function(data, status) {
+            if (status === 'success') {
+                data.forEach(function(post) {
+                    addPostRow(post);
+                });
+            } else {
+                alert('Server Error');
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        listPosts();
+    });
+</script>
+
+</body>
+</html>
