@@ -6,20 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="data:;base64,iVBORw0KGg==" />
-        <script>
-            function getCookie(name) {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].split('=');
-            console.log(i)
-            if (cookie[0] == name) {
-                console.log(cookie[1])
-            return cookie[1].toString();
-        }
-        }
-            return '';
-        }
-    </script>
     <title>Document</title>
 </head>
 <body>
@@ -31,6 +17,20 @@
 <button onclick="showCookies()">Show the cookies</button>
 
 <script>
+    function getCookie(name) {
+        const cname = name + "=";
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookies = decodedCookie.split(';');
+
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i].trim();
+            if (cookie.indexOf(cname) === 0) {
+                return cookie.substring(cname.length);
+            }
+        }
+
+        return "";
+    }
     function setCookies() {
         var expires = new Date();
         expires.setDate(expires.getDate() + 10);
@@ -38,12 +38,11 @@
         document.cookie = "email=" + document.getElementById("email").value + "; expires=" + expires.toUTCString();
     }
 
+
     function showCookies() {
-        var email = getCookie('email');
-        var firstname = getCookie('firstname');
-        var p = document.createElement("p");
-        p.innerHTML = "Email: " + email + " - Firstname: " + firstname;
-        document.body.appendChild(p);
+        const para = document.createElement("p");
+        para.textContent = `Email: ${getCookie("email")} - Firstname: ${getCookie("firstname")}`;
+        document.body.appendChild(para);
     }
 </script>
 </body>

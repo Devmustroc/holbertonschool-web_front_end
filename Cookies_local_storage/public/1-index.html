@@ -23,9 +23,9 @@
     }
 
     function showCookies() {
-        var p = document.createElement("p");
-        p.innerHTML = "Cookies: " + document.cookie;
-        document.body.appendChild(p);
+        const para = document.createElement("p");
+        para.textContent = `Email: ${getCookie("email")} - Firstname: ${getCookie("firstname")}`;
+        document.body.appendChild(para);
     }
 </script>
 </body>
