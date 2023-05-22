@@ -18,8 +18,10 @@
 
     <script>
         function setCookies() {
-            document.cookie = "firstname=" + document.getElementById("firstname").value;
-            document.cookie = "email=" + document.getElementById("email").value;
+            var expires = new Date();
+            expires.setDate(expires.getDate() + 10);
+            document.cookie = "firstname=" + document.getElementById("firstname").value + "; expires=" + expires.toUTCString();
+            document.cookie = "email=" + document.getElementById("email").value + "; expires=" + expires.toUTCString();
         }
 
         function showCookies() {
