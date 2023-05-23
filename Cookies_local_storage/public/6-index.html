@@ -27,7 +27,7 @@
     // Function to add an item to the cart
     function addItemToCart(item) {
         // Add a key to the local storage of the name of the item, and set the value to true
-        localStorage.setItem(item, true);
+        sessionStorage.setItem(item, true);
     }
 
     // Function to create the store
@@ -47,13 +47,13 @@
     // Function to display the cart
     function displayCart() {
         // If the local storage does not contain any item, this function does not do anything
-        if (sessionStorage.length === 0) {
+        if (window.sessionStorage.length === 0) {
             return;
         }
 
         // Create a p element and append it to the body
         const cart = document.createElement("p");
-        cart.textContent = `You previously had ${localStorage.length} items in your cart`;
+        cart.textContent = `You previously had ${sessionStorage.length} items in your cart`;
         document.body.appendChild(cart);
     }
 </script>
