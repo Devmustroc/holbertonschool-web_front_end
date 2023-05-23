@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Shopping Cart</h1>
+<ul id="store"></ul>
+<p id="cart"></p>
+<script>
+    // Create an array of available items
+    const availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+    // Check if local storage is enabled
+    if (typeof window.sessionStorage === "undefined") {
+        alert("Sorry, your browser does not support Web storage. Try again with a better one");
+    } else {
+        // Create the store
+        createStore();
+        displayCart();
+    }
+
+    // Function to add an item to the cart
+    function addItemToCart(item) {
+        // Add a key to the local storage of the name of the item, and set the value to true
+        localStorage.setItem(item, true);
+    }
+
+    // Function to create the store
+    function createStore() {
+        // Create a ul and append it to the DOM
+        const store = document.getElementById("store");
+
+        // Loop through the array of items, and create a list item to add to the ul
+        for (const item of availableItems) {
+            const listItem = document.createElement("li");
+            listItem.textContent = item;
+            listItem.addEventListener("click", () => addItemToCart(item));
+            store.appendChild(listItem);
+        }
+    }
+
+    // Function to display the cart
+    function displayCart() {
+        // If the local storage does not contain any item, this function does not do anything
+        if (sessionStorage.length === 0) {
+            return;
+        }
+
+        // Create a p element and append it to the body
+        const cart = document.createElement("p");
+        cart.textContent = `You previously had ${localStorage.length} items in your cart`;
+        document.body.appendChild(cart);
+    }
+</script>
+</body>
+</html>
